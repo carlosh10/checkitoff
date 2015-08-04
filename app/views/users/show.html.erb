@@ -9,3 +9,11 @@
      </div>
    </div>
  </div>
+
+<ul>
+  <% @user.items.each do |i| %>
+    <li><%= i.name %></li>
+  <% end %>
+</ul>
+
+<%= render "items/form.html.erb" %>
