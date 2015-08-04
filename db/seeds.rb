@@ -50,8 +50,19 @@ users = User.all
  member.save!
 
 
+ # Create Items
+ 20.times do
+   Item.create!(
+     name:  Faker::Lorem.sentence,
+     body:   Faker::Lorem.paragraph
+     #user:  users.sample
+   )
+ end
+ items = Item.all
+
 puts "Seed finished"
 
 puts "#{User.count} users created"
+puts "#{Item.count} items created"
 
 
