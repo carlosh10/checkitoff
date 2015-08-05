@@ -48,21 +48,23 @@ users = User.all
  )
  member.skip_confirmation!
  member.save!
+puts "#{User.count} users created"
 
+ lists = List.all
+ puts "#{List.count} lists generated."
 
- # Create Items
- 20.times do
-   Item.create!(
-     name:  Faker::Lorem.sentence,
-     body:   Faker::Lorem.paragraph
-     #user:  users.sample
-   )
- end
- items = Item.all
+# Create items for the lists
+83.times do
+  item = Item.create!(
+    list: lists.sample,
+    name: Faker::Lorem.word,
+    created_at: (Time.now - Random.new.rand(0..8).days)
+    )
+end
+puts "#{Item.count} todo items generated"
 
 puts "Seed finished"
 
-puts "#{User.count} users created"
-puts "#{Item.count} items created"
+
 
 
